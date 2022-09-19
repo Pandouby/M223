@@ -3,5 +3,8 @@ package ch.sid.repository;
 import ch.sid.model.User;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<Long, User> {
+import java.util.Optional;
+
+public interface UserRepository extends CrudRepository<User, Long> {
+    Optional<User> findByEmail(String email);
 }
