@@ -3,7 +3,7 @@ package ch.sid.model;
 import javax.persistence.*;
 
 @Entity(name = "MEMBER")
-public class Member {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)

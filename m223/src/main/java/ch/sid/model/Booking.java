@@ -13,7 +13,7 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "creator", nullable = false, referencedColumnName = "id")
-    private Member creator;
+    private User creator;
 
     @Column(name = "day_duration", nullable = false)
     private float dayDuration;
@@ -24,11 +24,11 @@ public class Booking {
     @Column(name = "status", nullable = false)
     private String status;
 
-    public Member getCreator() {
+    public User getCreator() {
         return creator;
     }
 
-    public void setCreator(Member creator) {
+    public void setCreator(User creator) {
         this.creator = creator;
     }
 
