@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS USER CASCADE;
+CREATE TABLE USER
+(
+    id int AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS BOOKING CASCADE;
+CREATE TABLE BOOKING
+(
+    id int AUTO_INCREMENT,
+    user int NOT NULL,
+    day_duration int NOT NULL,
+    date date DEFAULT GETDATE(),
+    status VARCHAR(50),
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (user) REFERENCES CATEGORY (id)
+);

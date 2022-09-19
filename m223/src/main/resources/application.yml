@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:/Users/silvandubach/Documents/UeK/M223/_project/m233
+    driverClassName: org.h2.Driver
+    username: root
+    password: 123456
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+  h2:
+    console.enabled: true
