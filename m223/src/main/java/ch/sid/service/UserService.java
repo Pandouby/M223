@@ -1,6 +1,6 @@
 package ch.sid.service;
 
-import ch.sid.model.User;
+import ch.sid.model.Member;
 import ch.sid.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +28,7 @@ public class UserService {
         }
     }
 
-    public ResponseEntity create(User user) {
+    public ResponseEntity create(Member user) {
         if(userRepository.findByEmail(user.getEmail()).isPresent()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }else {
@@ -37,9 +37,9 @@ public class UserService {
         }
     }
 
-    public ResponseEntity update(Long id, User user) {
+    public ResponseEntity update(Long id, Member user) {
         if(userRepository.existsById(id)) {
-            User tempUser = userRepository.findById(id).get();
+            Member tempUser = userRepository.findById(id).get();
             tempUser.setName(user.getName());
             tempUser.setLastname(user.getLastname());
             tempUser.setEmail(user.getEmail());

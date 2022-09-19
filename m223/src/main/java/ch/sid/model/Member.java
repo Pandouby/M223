@@ -2,8 +2,8 @@ package ch.sid.model;
 
 import javax.persistence.*;
 
-@Entity(name = "USER")
-public class User {
+@Entity(name = "MEMBER")
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
@@ -13,7 +13,7 @@ public class User {
     private String name;
 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "lastname", updatable = false, nullable = false)
     private String lastname;
 
     @Column(name = "email", nullable = false)
@@ -69,7 +69,6 @@ public class User {
         this.id = id;
     }
 
-    @Id
     public Long getId() {
         return id;
     }

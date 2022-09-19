@@ -1,10 +1,12 @@
 package ch.sid.repository;
 
-import ch.sid.model.User;
+import ch.sid.model.Member;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface UserRepository extends CrudRepository<User, Long> {
-    Optional<User> findByEmail(String email);
+@Repository
+public interface UserRepository extends CrudRepository<Member, Long> {
+    Optional<Member> findByEmail(String email);
 }

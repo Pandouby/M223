@@ -2,19 +2,18 @@ package ch.sid.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity(name = "BOOKING")
 public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false, nullable = false, insertable = false)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "creator", nullable = false)
-    private User creator;
+    @JoinColumn(name = "creator", nullable = false, referencedColumnName = "id")
+    private Member creator;
 
     @Column(name = "day_duration", nullable = false)
     private float dayDuration;
@@ -25,11 +24,11 @@ public class Booking {
     @Column(name = "status", nullable = false)
     private String status;
 
-    public User getCreator() {
+    public Member getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(Member creator) {
         this.creator = creator;
     }
 
@@ -61,7 +60,6 @@ public class Booking {
         this.id = id;
     }
 
-    @Id
     public Long getId() {
         return id;
     }
