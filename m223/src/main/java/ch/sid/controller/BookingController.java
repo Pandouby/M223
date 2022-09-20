@@ -29,37 +29,22 @@ public class BookingController {
     }
 
     @Operation(
-            summary = "Get all Bookings",
-            description = "Get a list of all Bookings",
+            summary = "Get Bookings",
+            description = "Get all existing Bookings",
             security = {@SecurityRequirement(name = "JWT Auth")}
     )
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity getBookings() {
-        return bookingService.getBookings();
-    }
-
-
-    @Operation(
-            summary = "Get Booking by Id",
-            description = "Get a Booking by Id",
-            security = {@SecurityRequirement(name = "JWT Auth")}
-    )
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/user/{id}")
-    public ResponseEntity getBookingByUser(@PathVariable UUID id) {
-        return bookingService.getBookingByUser(id);
-    }
-
-    @Operation(
-            summary = "Get all Bookings by status",
-            description = "Get a list of Bookings by status",
-            security = {@SecurityRequirement(name = "JWT Auth")}
-    )
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/{status}")
-    ResponseEntity getBookingByStatus(@PathVariable String status) {
-        return bookingService.getBookingByStatus(status);
+    public ResponseEntity<Booking> getAllBookings(@RequestParam(value = "status", required = false) String status, @RequestParam(value = "userid", required = false) UUID userid){
+        if(status != null && userid != null){
+            return bookingService.getBookingsByStatusAndUserId(status, userid);
+        } else if(status != null){
+            return bookingService.getBookingByStatus(status);
+        } else if(userid != null){
+            return bookingService.getBookingByUser(userid);
+        } else {
+            return bookingService.getBookings();
+        }
     }
 
     @Operation(

@@ -6,7 +6,6 @@ import ch.sid.repository.BookingRepository;
 import ch.sid.repository.MemberRepository;
 import ch.sid.security.JwtServiceHMAC;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,20 +14,19 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
 public class BookingService {
 
     BookingRepository bookingRepository;
-    MemberRepository userRepository;
+    MemberRepository memberRepository;
     JwtServiceHMAC jwtService;
 
     @Autowired
     public BookingService(BookingRepository bookingRepository, MemberRepository userRepository, JwtServiceHMAC jwtService) {
         this.bookingRepository = bookingRepository;
-        this.userRepository = userRepository;
+        this.memberRepository = userRepository;
         this.jwtService = jwtService;
     }
 
@@ -37,7 +35,7 @@ public class BookingService {
     }
 
     public ResponseEntity getBookingByUser(UUID id) {
-        if(userRepository.existsById(id)){
+        if(memberRepository.existsById(id)){
             return new ResponseEntity(bookingRepository.findByCreatorId(id).get(), HttpStatus.OK);
         }else {
             return new ResponseEntity(HttpStatus.OK);
@@ -52,7 +50,7 @@ public class BookingService {
         token = token.substring(7);
         DecodedJWT decode = jwtService.verifyJwt(token, true);
         String userId = decode.getClaim("user_id").asString();
-        Member member = userRepository.findById(UUID.fromString(userId)).get();
+        Member member = memberRepository.findById(UUID.fromString(userId)).get();
         booking.setStatus("PENDING");
         booking.setCreator(member);
 
@@ -65,7 +63,7 @@ public class BookingService {
     }
 
     public ResponseEntity update(UUID id, Booking booking) {
-        if(userRepository.existsById(id)){
+        if(memberRepository.existsById(id)){
             Booking tempBooking = bookingRepository.findById(id).get();
             tempBooking.setCreator(booking.getCreator());
             tempBooking.setDate(booking.getDate());
@@ -78,7 +76,7 @@ public class BookingService {
     }
 
     public ResponseEntity updateStatus (UUID id, String status) {
-        if(userRepository.existsById(id)){
+        if(memberRepository.existsById(id)){
             Booking booking = bookingRepository.findById(id).get();
             booking.setStatus(status);
             bookingRepository.save(booking);
@@ -97,6 +95,14 @@ public class BookingService {
         }
     }
 
+    public ResponseEntity<Booking> getBookingsByStatusAndUserId(String status, UUID userid) {
+        boolean userExists = memberRepository.existsById(userid);
+        if(userExists){
+            return new ResponseEntity(bookingRepository.findAllByStatusAndCreatorId(status, userid), HttpStatus.OK);
+        }else{
+            return new ResponseEntity("User with given ID does not exist", HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 }
