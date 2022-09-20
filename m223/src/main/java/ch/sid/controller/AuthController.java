@@ -28,7 +28,6 @@ public class AuthController {
     public AuthController(JwtServiceHMAC jwtService, MemberService memberService) {
         this.jwtService = jwtService;
         this.memberService = memberService;
-
     }
 
     @Operation(
@@ -55,8 +54,13 @@ public class AuthController {
         return new ResponseEntity(jwt, HttpStatus.OK);
     }
 
-   /* @PostMapping("/register")
+    @Operation(
+            summary = "Register",
+            description = "Register a new User with name, lastname, email & password",
+            security = {@SecurityRequirement(name = "JWT Auth")}
+    )
+    @PostMapping("/register")
     public ResponseEntity register(@RequestBody Member member){
-
-    }*/
+        return new ResponseEntity(memberService.create(member), HttpStatus.OK);
+    }
 }

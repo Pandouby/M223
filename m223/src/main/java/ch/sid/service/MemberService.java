@@ -41,6 +41,8 @@ public class MemberService {
         if(memberRepository.findByEmail(user.getEmail()).isPresent()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }else {
+            user.setRole("MEMBER");
+            user.setId(UUID.randomUUID());
             memberRepository.save(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
