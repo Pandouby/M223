@@ -3,6 +3,8 @@ package ch.sid.controller;
 import ch.sid.model.Member;
 import ch.sid.security.JwtServiceHMAC;
 import ch.sid.service.MemberService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,11 @@ public class AuthController {
 
     }
 
+    @Operation(
+            summary = "Login",
+            description = "Login with existing username and password",
+            security = {@SecurityRequirement(name = "JWT Auth")}
+    )
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody Member user) {
         ArrayList<String> scopes = new ArrayList<String>();
