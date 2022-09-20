@@ -1,18 +1,21 @@
 package ch.sid.service;
 
-import ch.sid.model.User;
-import ch.sid.repository.UserRepository;
+import ch.sid.model.Member;
+import ch.sid.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
-public class UserService {
-    UserRepository userRepository;
+public class MemberService {
+    MemberRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public MemberService(MemberRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -20,7 +23,7 @@ public class UserService {
         return new ResponseEntity(userRepository.findAll(), HttpStatus.OK);
     }
 
-    public ResponseEntity getUser(Long id) {
+    public ResponseEntity getUser(UUID id) {
         if(userRepository.existsById(id)) {
             return new ResponseEntity(userRepository.findById(id).get(), HttpStatus.OK);
         }else {
@@ -28,7 +31,7 @@ public class UserService {
         }
     }
 
-    public ResponseEntity create(User user) {
+    public ResponseEntity create(Member user) {
         if(userRepository.findByEmail(user.getEmail()).isPresent()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }else {
@@ -37,9 +40,9 @@ public class UserService {
         }
     }
 
-    public ResponseEntity update(Long id, User user) {
+    public ResponseEntity update(UUID id, Member user) {
         if(userRepository.existsById(id)) {
-            User tempUser = userRepository.findById(id).get();
+            Member tempUser = userRepository.findById(id).get();
             tempUser.setName(user.getName());
             tempUser.setLastname(user.getLastname());
             tempUser.setEmail(user.getEmail());
@@ -54,7 +57,7 @@ public class UserService {
 
     }
 
-    public ResponseEntity delete(Long id) {
+    public ResponseEntity delete(UUID id) {
         if(userRepository.existsById(id)) {
             userRepository.deleteById(id);
             return new ResponseEntity(HttpStatus.OK);
@@ -63,4 +66,7 @@ public class UserService {
         }
     }
 
+    public Optional<Member> getByEmailAndPassword(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password);
+    }
 }

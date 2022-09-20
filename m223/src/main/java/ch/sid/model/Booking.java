@@ -1,19 +1,25 @@
 package ch.sid.model;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity(name = "BOOKING")
 public class Booking {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", updatable = false, nullable = false, insertable = false)
-    private Long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id", updatable = false, nullable = false)
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    UUID id = UUID.randomUUID();
 
     @ManyToOne
     @JoinColumn(name = "creator", nullable = false, referencedColumnName = "id")
-    private User creator;
+    private Member creator;
 
     @Column(name = "day_duration", nullable = false)
     private float dayDuration;
@@ -24,11 +30,11 @@ public class Booking {
     @Column(name = "status", nullable = false)
     private String status;
 
-    public User getCreator() {
+    public Member getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(Member creator) {
         this.creator = creator;
     }
 
@@ -56,11 +62,11 @@ public class Booking {
         this.status = status;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 }

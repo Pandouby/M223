@@ -21,7 +21,7 @@ USE `coworkingspace` ;
 
 DROP TABLE IF EXISTS `coworkingspace`.`MEMBER` ;
 CREATE TABLE `coworkingspace`.`MEMBER` (
-    `id` INT NOT NULL AUTO_INCREMENT,
+    `id` UUID,
     `name` VARCHAR(50) NOT NULL,
     `lastname` VARCHAR(50) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
@@ -32,8 +32,8 @@ CREATE TABLE `coworkingspace`.`MEMBER` (
 
 DROP TABLE IF EXISTS `coworkingspace`.`BOOKING` CASCADE;
 CREATE TABLE `coworkingspace`.`BOOKING` (
-    `id` INT NOT NULL,
-    `creator` int NOT NULL,
+    `id` UUID,
+    `creator` UUID,
     `day_duration` int NOT NULL,
     `date` date NOT NULL,
     `status` VARCHAR(50) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `coworkingspace`.`BOOKING` (
 
 INSERT INTO `coworkingspace`.`MEMBER` (`id`, `name`, `lastname`, `email`, `password`, `role`)
 VALUES (
-        1,
+        '4be5f5bf-8eb5-44ea-8eb5-a5e807856d09',
         'Peter',
         'Rutschmann',
         'peter.rutschmann@gmail.com',
@@ -51,7 +51,7 @@ VALUES (
         'ADMIN'
     ),
     (
-        2,
+        'e1eec954-6ef4-4926-8183-7575af189f2a',
         'Johannes',
         'Höffliger',
         'johannes.höffliger@gmail.com',
@@ -59,4 +59,4 @@ VALUES (
         'MEMBER'
     );
 INSERT INTO BOOKING (id, creator, day_duration, date, status)
-VALUES (1, 1, 0.5, '2022-09-23', 'Pending');
+VALUES ('413e2297-b84b-42ef-97ed-16a8a9d1d671', '4be5f5bf-8eb5-44ea-8eb5-a5e807856d09', 0.5, '2022-09-23', 'Pending');

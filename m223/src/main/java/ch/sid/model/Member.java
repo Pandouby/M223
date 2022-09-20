@@ -1,13 +1,19 @@
 package ch.sid.model;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity(name = "MEMBER")
-public class User {
+public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false)
-    private Long id;
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    UUID id = UUID.randomUUID();
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -65,11 +71,11 @@ public class User {
         this.role = role;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 }
