@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.UUID;
 
 @RestController
@@ -59,10 +61,10 @@ public class UserController {
             description = "Update an existing User by Id",
             security = {@SecurityRequirement(name = "JWT Auth")}
     )
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PutMapping("/{id}")
-    public ResponseEntity updateUser(@PathVariable UUID id, @RequestBody Member user) {
-        return userService.update(id, user);
+    public ResponseEntity updateUser(@PathVariable UUID id, @RequestBody Member user, @RequestHeader("Authorization") String token) throws GeneralSecurityException, IOException {
+        return userService.update(id, user, token);
     }
 
     @Operation(

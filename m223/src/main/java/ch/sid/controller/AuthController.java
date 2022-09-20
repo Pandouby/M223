@@ -33,7 +33,7 @@ public class AuthController {
 
     @Operation(
             summary = "Login",
-            description = "Login with existing username and password",
+            description = "Login  with existing username and password",
             security = {@SecurityRequirement(name = "JWT Auth")}
     )
     @PostMapping("/login")
