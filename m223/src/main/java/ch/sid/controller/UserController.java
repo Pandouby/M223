@@ -16,7 +16,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity getUsers() {
         return userService.getUsers();
     }
@@ -26,17 +26,17 @@ public class UserController {
         return userService.getUser(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity createUser(@RequestBody User user) {
         return userService.create(user);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity updateUser(@PathVariable Long id, @RequestBody User user) {
         return userService.update(id, user);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteUser(@PathVariable Long id) {
         return userService.delete(id);
     }

@@ -26,7 +26,7 @@ public class BookingService {
 
     public ResponseEntity getBookingByUser(Long id) {
         if(userRepository.existsById(id)){
-            return new ResponseEntity(bookingRepository.findByCreator(id).get(), HttpStatus.OK);
+            return new ResponseEntity(bookingRepository.findByCreatorId(id).get(), HttpStatus.OK);
         }else {
             return new ResponseEntity(HttpStatus.OK);
         }

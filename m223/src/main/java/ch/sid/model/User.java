@@ -23,7 +23,7 @@ public class User {
     private String password;
 
     @Column(name = "role", nullable = false)
-    private String role;
+    private String role = "MEMBER";
 
     public String getName() {
         return name;
