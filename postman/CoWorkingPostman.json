@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "702fd687-0aeb-48d8-8f12-1c487857f5a3",
+		"name": "CoWorking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UserController",
+			"item": [
+				{
+					"name": "getUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoiNGJlNWY1YmYtOGViNS00NGVhLThlYjUtYTVlODA3ODU2ZDA5Iiwic2NvcGUiOlsiQURNSU4iXSwibmFtZSI6InBldGVyLnJ1dHNjaG1hbm5AZ21haWwuY29tIiwidHlwIjoiQmVhcmVyIiwiZXhwIjoxNjYzODMxODcyLCJpYXQiOjE2NjM3NDU0NzIsImp0aSI6IjJhNTRiYjAxLWVjYjYtNGM0NC04NTNhLWU5YzlkZDJjZDk0MSJ9.W7l0gO62GTaioajDrFiP11Ts0zlaYO-t5MnjaQGe7Vqp3ImCVIh93X4Cqwu337wpAEQNLaBMCFTiFbhX43qBww",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoiNGJlNWY1YmYtOGViNS00NGVhLThlYjUtYTVlODA3ODU2ZDA5Iiwic2NvcGUiOlsiQURNSU4iXSwibmFtZSI6InBldGVyLnJ1dHNjaG1hbm5AZ21haWwuY29tIiwidHlwIjoiQmVhcmVyIiwiZXhwIjoxNjYzNzYxMTk4LCJpYXQiOjE2NjM2NzQ3OTgsImp0aSI6ImU2Njk4ZGQ3LTJmOWYtNDI3OC04OWJjLWMyZjIzN2QxMTMyMiJ9.CDFz5XhPLt2D3ophgfurQ1Vi9PN-Jme6D0p-cp12Y40dzn__GnLODsPLk_rmi-ep4YkZZ9MIiIPKKjDxVIde6w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoiNGJlNWY1YmYtOGViNS00NGVhLThlYjUtYTVlODA3ODU2ZDA5Iiwic2NvcGUiOlsiQURNSU4iXSwibmFtZSI6InBldGVyLnJ1dHNjaG1hbm5AZ21haWwuY29tIiwidHlwIjoiQmVhcmVyIiwiZXhwIjoxNjYzNzYxNDAyLCJpYXQiOjE2NjM2NzUwMDIsImp0aSI6ImYzM2UzNjkxLTA1MDAtNGQ0Ni05MmYzLTlhNzMyNDEzOTZiMSJ9.DUmCfKoGnFtJihikvXlN9YYpdZrT5vnF_XWhFlgkFnpejxOik2B7wQi5zu2V48CVsVR9TEsVcKEKttmDedvkzA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sandra\",\n    \"lastname\": \"Meier\",\n    \"email\": \"sandra.Meier@gmail.com\",\n    \"password\": \"test1234\",\n    \"role\": \"MEMBER\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoiYWM0NjI4YTktMWQ3Mi00YjQ2LTkxZGYtNTY0YjliNTAyNDFlIiwic2NvcGUiOlsiTUVNQkVSIl0sIm5hbWUiOiJzYW5kcmEuTWVpZXJAZ21haWwuY29tIiwidHlwIjoiQmVhcmVyIiwiZXhwIjoxNjYzNzY4NjU1LCJpYXQiOjE2NjM2ODIyNTUsImp0aSI6ImRiNWEyZjhjLWJjNDMtNDBjMi1iNTFkLTZiYzcyMTZiMDA1NiJ9.wUjcdeMcPGmnMhy3OqDM4HYazg756N-M6mQKBWS4dGd2LstwOEu60ebMNriJ99c2Pmn6cGlpzKr1pPGQvdGMhg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n\n        \"name\": \"Test\",\n        \"lastname\": \"Meier\",\n        \"password\": \"test1234\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/users/ac4628a9-1d72-4b46-91df-564b9b50241e",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"ac4628a9-1d72-4b46-91df-564b9b50241e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BookingController",
+			"item": [
+				{
+					"name": "getBookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoiNGJlNWY1YmYtOGViNS00NGVhLThlYjUtYTVlODA3ODU2ZDA5Iiwic2NvcGUiOlsiQURNSU4iXSwibmFtZSI6InBldGVyLnJ1dHNjaG1hbm5AZ21haWwuY29tIiwidHlwIjoiQmVhcmVyIiwiZXhwIjoxNjYzODMxODcyLCJpYXQiOjE2NjM3NDU0NzIsImp0aSI6IjJhNTRiYjAxLWVjYjYtNGM0NC04NTNhLWU5YzlkZDJjZDk0MSJ9.W7l0gO62GTaioajDrFiP11Ts0zlaYO-t5MnjaQGe7Vqp3ImCVIh93X4Cqwu337wpAEQNLaBMCFTiFbhX43qBww",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bookings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBookingsByStatusAndId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bookings?status=pending&userid=e1eec954-6ef4-4926-8183-7575af189f2a",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookings"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "pending"
+								},
+								{
+									"key": "userid",
+									"value": "e1eec954-6ef4-4926-8183-7575af189f2a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bookings/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createBooking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoiYWM0NjI4YTktMWQ3Mi00YjQ2LTkxZGYtNTY0YjliNTAyNDFlIiwic2NvcGUiOlsiTUVNQkVSIl0sIm5hbWUiOiJzYW5kcmEuTWVpZXJAZ21haWwuY29tIiwidHlwIjoiQmVhcmVyIiwiZXhwIjoxNjYzNzYzMjY1LCJpYXQiOjE2NjM2NzY4NjUsImp0aSI6ImY0ZGYyYzUxLWVhNzUtNGVhMy04MDQ2LTA1YzdhNDUxYjU2NyJ9.MskVTCMpFkuwSRECD-xNpf5lmJk96fF_EmDf_2iY3ZrMAc4LWaSJgRFo0sJ6XdbsgDJKUoOK1xe9ppgJMrQK9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"dayDuration\": 0.5,\n    \"date\": \"2022-09-26\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bookings",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bookings/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookings",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n    \"dayDuration\": 1.0,\n    \"date\": \"2022-09-23\",\n    \"status\": \"Pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bookings/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateStatus",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"ACCEPTED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bookings/status/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bookings",
+								"status",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AuthController",
+			"item": [
+				{
+					"name": "loginAsAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"peter.rutschmann@gmail.com\",\n    \"password\": \"test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginAsMember",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"johannes.höfflinger@gmail.com\",\n    \"password\": \"test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registerNewMember",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sandra\",\n    \"lastname\": \"Meier\",\n    \"email\": \"sandra.meier@gmail.com\",\n    \"password\": \"test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
