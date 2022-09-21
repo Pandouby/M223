@@ -1,0 +1,149 @@
+commit 537f05927183fa811327c4ee431c9786c71b088c
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 14:22:54 2022 +0200
+
+    updated readme
+
+commit 6410a03e863d97020405cad487826a4b7c0f70f0
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 14:21:31 2022 +0200
+
+    updated readme
+
+commit f9e2c89bdb927d32b7e2070486bdcbf7eb8c2f20
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 14:15:28 2022 +0200
+
+    added postman export
+
+commit c9d79869b0a6442cdef8cc65c342080573c29b4a
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 14:07:21 2022 +0200
+
+    added integration test for deletion of booking
+
+commit dcc4e340fb357b8b4dd251221c7710ab1a3bfe9e
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 14:05:51 2022 +0200
+
+    added additional value to sql
+
+commit 514162bcd53cdc0894fede543407b963a0416b0e
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 13:57:48 2022 +0200
+
+    fixed update and create functionality
+
+commit f8efb34c1ac7d87fdee446389a998908eb80ca4f
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 13:57:08 2022 +0200
+
+    added integration tests
+
+commit a9b9b055c3a065989a07694d6dbf03e90b68ab2b
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 10:49:02 2022 +0200
+
+    added further instructions to readme
+
+commit 5fd8109bae65b09e7f99fa40e6b55696a78a8440
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 10:40:35 2022 +0200
+
+    minor changes on update endpoint
+
+commit ace66f2a6a2522d140c13a5321d7aff318d31844
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Wed Sep 21 08:54:16 2022 +0200
+
+    jwt check for changing staatus of booking
+
+commit 278c434b09383a9b1b87f6eb61ef8c0f958ed18f
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Tue Sep 20 16:43:56 2022 +0200
+
+    added rest confrom pathvariables
+
+commit eb24ab7273069b38c5fb5f0d82ac29b4aa16fc8f
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Tue Sep 20 16:08:26 2022 +0200
+
+    added register endpoint
+
+commit 5eeb06107e76f87390abec6ebe2884b2c3d0572c
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Tue Sep 20 16:02:24 2022 +0200
+
+    added check for user update
+
+commit 1507bd159c033e98347fa4c7e07927823e868b16
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Tue Sep 20 15:51:54 2022 +0200
+
+    added documentation in readme
+
+commit 73a46294fee9a3412dcb99e426620cf753f5ff08
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Tue Sep 20 15:50:53 2022 +0200
+
+    added openAPI documentation
+
+commit 065bbb9d5f43503e51fd8e27289e83bd23c3a782
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Tue Sep 20 14:54:37 2022 +0200
+
+    added jwt auth
+
+commit 39d07df917c7d85cbade338ad438ed3a13d5725e
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Tue Sep 20 09:28:31 2022 +0200
+
+    added booking controller
+
+commit 46fa68933b695d09bd85d69c2b9537b1ec72dd7e
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Mon Sep 19 22:12:49 2022 +0200
+
+    changed h2 to docker
+
+commit a97e02ca1a4dc784950d399222aea9dc272fcd07
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Mon Sep 19 13:42:45 2022 +0200
+
+    fixed sql syntax and models
+
+commit aa9a4b76e1559455783633bf0231e068fe6be5e1
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Mon Sep 19 11:25:10 2022 +0200
+
+    added service classes
+
+commit 74daecf39ce73fcd8bba2946ac3aba3629fe2b73
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Mon Sep 19 10:41:09 2022 +0200
+
+    added repository classes
+
+commit 681d4eacd85e6ad47c4cc5648c85cee1ed0b8675
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Mon Sep 19 10:39:13 2022 +0200
+
+    added models
+
+commit 814d0ebb3dd9c4d2a3fec5893841acc3ca32cad8
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Mon Sep 19 10:22:03 2022 +0200
+
+    added dependencies and test data
+
+commit a4eaf19cb29ec3a75b9ff7710f4f7386c0aa9c32
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Mon Sep 19 09:28:55 2022 +0200
+
+    initial commit with base porject
+
+commit 4189e9e46b6e6e9ab926a39ec4597092108020c3
+Author: Pandouby <57749377+Pandouby@users.noreply.github.com>
+Date:   Mon Sep 19 08:12:59 2022 +0200
+
+    Initial commit
