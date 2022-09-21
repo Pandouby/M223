@@ -33,8 +33,7 @@ To start this project, you need to have the following tools installed on your ma
 
 ### Starting the database server
 
-To start the database server, you need to ensure that you have the docker-compose file as well as an "init" folder in the same directory. The "init" folder should include an SQL file.
-Then, you can start the database server by running the following command in the root directory of the project:
+To start the database server, you need to ensure that you have navigated to the docker directory of the project. If you are located in the docker directory run the command below.
 
 ```sh
 docker compose up
@@ -42,7 +41,7 @@ docker compose up
 
 ### Starting the Springboot application
 
-You can run the springboot application in the IDE of your choice. The application will most likely run on port 8080.
+The Application is located in the m223 directory of the project. You can run the springboot application in the IDE of your choice. The application will most likely run on port 8080.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -52,7 +51,10 @@ The application will start with the following users:
 * Peter Rutschmann (Admin) - login: peter.rutschmann@gmail.com - pw: test1234 
 * Johannes Höffliger (Member) - login: johannes.höffliger@gmail.com - pw: test1234
 
-
+### phpMyAdmin
+On the port 8090 you can get acces to the database with the following credentials.
+* username: root
+* password: 123456
 
 <!-- USAGE EXAMPLES -->
 ## Important Information
@@ -65,5 +67,5 @@ Therefore, the database <b>does not feature a Table for the location of bookings
 
 ### Client Demo (Postman)
 To be able to make requests to endpoints in a manner, corresponding to how an actual client would. There will be a Postman export in addition to the base Project
-that can be used to make requests to the endpoints. The Postman export can be found in the root directory of the project. To be able to test the endpoints the user musst first login either with Admin or Member with the coresponding postman call.
+that can be used to make requests to the endpoints. The Postman export can be found in the postman directory of the project. To be able to test the endpoints the user musst first login either with Admin or Member with the coresponding postman call.
 
