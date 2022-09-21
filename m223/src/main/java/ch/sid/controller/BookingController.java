@@ -70,13 +70,13 @@ public class BookingController {
 
     @Operation(
             summary = "Update status of Booking",
-            description = "Update status of Booking by Id",
+            description = "Update status of Booking by Id. NOTE: the status can only be changed to CANCELED",
             security = {@SecurityRequirement(name = "JWT Auth")}
     )
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/status/{id}")
-    public ResponseEntity updateStatus(@PathVariable UUID id, @RequestBody Booking booking){
-        return bookingService.updateStatus(id, booking.getStatus());
+    public ResponseEntity updateStatus(@PathVariable UUID id, @RequestBody Booking booking,  @RequestHeader("Authorization") String token) throws GeneralSecurityException, IOException {
+        return bookingService.updateStatus(id, booking, token);
     }
 
     @Operation(
