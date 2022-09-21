@@ -13,7 +13,7 @@ public class Member {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false)
     @Type(type = "org.hibernate.type.UUIDCharType")
-    UUID id = UUID.randomUUID();
+    UUID id;
 
     @Column(name = "name", nullable = false)
     private String name;

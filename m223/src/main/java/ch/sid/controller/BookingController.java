@@ -1,13 +1,11 @@
 package ch.sid.controller;
 
 import ch.sid.model.Booking;
-import ch.sid.security.JwtServiceHMAC;
 import ch.sid.service.BookingService;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -35,15 +34,15 @@ public class BookingController {
     )
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Booking> getAllBookings(@RequestParam(value = "status", required = false) String status, @RequestParam(value = "userid", required = false) UUID userid){
+    public ResponseEntity<List<Booking>> getAllBookings(@RequestParam(value = "status", required = false) String status, @RequestParam(value = "userid", required = false) UUID userid){
         if(status != null && userid != null){
-            return bookingService.getBookingsByStatusAndUserId(status, userid);
+            return new ResponseEntity(bookingService.getBookingsByStatusAndUserId(status, userid), HttpStatus.OK);
         } else if(status != null){
-            return bookingService.getBookingByStatus(status);
+            return new ResponseEntity<>(bookingService.getBookingByStatus(status), HttpStatus.OK);
         } else if(userid != null){
-            return bookingService.getBookingByUser(userid);
+            return new ResponseEntity<>(bookingService.getBookingByUser(userid), HttpStatus.OK);
         } else {
-            return bookingService.getBookings();
+            return new ResponseEntity<>(bookingService.getBookings(), HttpStatus.OK);
         }
     }
 
@@ -54,7 +53,12 @@ public class BookingController {
     )
     @PostMapping
     public ResponseEntity createBooking(@RequestBody Booking booking, @RequestHeader("Authorization") String token) throws GeneralSecurityException, IOException {
-        return bookingService.createBooking(booking, token);
+        Booking returnBooking;
+        if((returnBooking = bookingService.createBooking(booking, token)) != null) {
+            return new ResponseEntity(returnBooking, HttpStatus.OK);
+        }else {
+            return  new ResponseEntity("Invalid date, date in the past in not possible", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Operation(
@@ -65,7 +69,12 @@ public class BookingController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity update(@PathVariable UUID id, @RequestBody Booking booking) {
-        return bookingService.update(id, booking);
+        Booking returnBooking;
+        if((returnBooking = bookingService.update(id, booking)) != null) {
+            return new ResponseEntity(returnBooking, HttpStatus.OK);
+        }else {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Operation(
@@ -76,7 +85,12 @@ public class BookingController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/status/{id}")
     public ResponseEntity updateStatus(@PathVariable UUID id, @RequestBody Booking booking,  @RequestHeader("Authorization") String token) throws GeneralSecurityException, IOException {
-        return bookingService.updateStatus(id, booking, token);
+        Booking returnBooking;
+        if((returnBooking = bookingService.updateStatus(id, booking, token)) != null) {
+            return new ResponseEntity(returnBooking, HttpStatus.OK);
+        }else {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Operation(
@@ -87,6 +101,10 @@ public class BookingController {
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable UUID id) {
-        return bookingService.delete(id);
+        if(bookingService.delete(id)) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else {
+            return  new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 }
