@@ -18,7 +18,7 @@ import java.security.GeneralSecurityException;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("booking")
+@RequestMapping("bookings")
 public class BookingController {
 
     BookingService bookingService;

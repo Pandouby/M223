@@ -34,6 +34,8 @@ public class BookingService {
         return new ResponseEntity(bookingRepository.findAll(), HttpStatus.OK);
     }
 
+    public ResponseEntity getBookingById(UUID id) {return new ResponseEntity(bookingRepository.findById(id), HttpStatus.OK); }
+
     public ResponseEntity getBookingByUser(UUID id) {
         if(memberRepository.existsById(id)){
             return new ResponseEntity(bookingRepository.findByCreatorId(id).get(), HttpStatus.OK);
@@ -65,7 +67,6 @@ public class BookingService {
     public ResponseEntity update(UUID id, Booking booking) {
         if(memberRepository.existsById(id)){
             Booking tempBooking = bookingRepository.findById(id).get();
-            tempBooking.setCreator(booking.getCreator());
             tempBooking.setDate(booking.getDate());
             tempBooking.setDayDuration(booking.getDayDuration());
             tempBooking.setStatus(booking.getStatus());
@@ -117,6 +118,8 @@ public class BookingService {
             return new ResponseEntity("User with given ID does not exist", HttpStatus.NOT_FOUND);
         }
     }
+
+
 
 
 }
