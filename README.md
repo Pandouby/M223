@@ -61,6 +61,9 @@ On the port 8090 you can get acces to the database with the following credential
 ### Links
 * API Documentation: http://localhost:8080/swagger-ui/index.html
 
+### Links
+The git history can be found in the log.text file in the root direcory of the project.
+
 ### Database structure
 The database was designed with the assumption that the bookable locations are actual office workstations. For that reason the admin will handle any assignement of bookings to specific available Seats. 
 Therefore, the database <b>does not feature a Table for the location of bookings. </b>
