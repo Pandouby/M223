@@ -42,9 +42,6 @@ public class BookingControllerIntegrationTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private MemberService memberService;
-
-    @Autowired
     private BookingService bookingService;
 
     private String accessToken;
@@ -102,7 +99,7 @@ public class BookingControllerIntegrationTest {
 
 
     @Test
-    @Description("adding a booking with given user")
+    @Description("Adding a booking with given user and valid informtion")
     public void createValidBooking() throws Exception {
         Booking booking = new Booking();
         booking.setDate(LocalDate.now());
@@ -169,107 +166,15 @@ public class BookingControllerIntegrationTest {
         assertEquals(0.5f, booking.getDayDuration());
         assertEquals("ACCEPTED", responseBooking.getStatus());
         assertEquals(LocalDate.now().plusDays(2), responseBooking.getDate());
-
     }
 
-    /*@Test
-    @Description("Test if the admin can update the reservation for the user")
-    public void testAdminFunction() throws Exception {
-
-        ControlReservation controlReservation = new ControlReservation();
-        controlReservation.setAnswer("denied");
-        controlReservation.setId(1L);
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
-        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-        String req = ow.writeValueAsString(controlReservation);
-
-        val res = mockMvc.perform(put("/api/book/authorize").contentType(MediaType.APPLICATION_JSON)
-                        .content(req)
-                        .header("Authorization", "Bearer " + accessToken))
+    @Test
+    @Description("Delete an exisitng booking by Id")
+    public void deleteById() throws Exception {
+        mockMvc.perform(delete("/bookings/777e2297-b84b-42ef-97ed-16a8a9d1d671").contentType(MediaType.APPLICATION_JSON).header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andReturn();
-        Reservation reservation = objectMapper.readValue(res.getResponse().getContentAsString(), new TypeReference<>() {
-        });
-        assertEquals(reservation.getAccepted(), 2);
     }
 
-    @Test
-    @Description("Testing Status Exception if a wrong one is given")
-    public void testStatusException() throws Exception {
-        ControlReservation controlReservation = new ControlReservation();
-        controlReservation.setAnswer("gibberish");
-        controlReservation.setId(1L);
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
-        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-        String req = ow.writeValueAsString(controlReservation);
-
-        val res = mockMvc.perform(put("/api/book/authorize").contentType(MediaType.APPLICATION_JSON)
-                        .content(req)
-                        .header("Authorization", "Bearer " + accessToken))
-                .andExpect(status().isBadRequest())
-                .andDo(print())
-                .andReturn();
-    }
-
-    @Test
-    @Description("Testing if getting unknown status for a member throws error")
-    public void testGetBookingStatusNotFound() throws Exception {
-        val res = mockMvc.perform(get("/api/book/status/67765").header("Authorization", "Bearer " + accessToken))
-                .andExpect(status().isNotFound())
-                .andDo(print())
-                .andReturn();
-    }
-
-    @Test
-    @Description("Testing if delete not found works works")
-    public void testCancellingBooking() throws Exception {
-        val res = mockMvc.perform(get("/api/book/cancel/75466547").header("Authorization", "Bearer " + accessToken))
-                .andExpect(status().isNotFound())
-                .andDo(print())
-                .andReturn();
-    }
-
-    @Test
-    @Description("Testing deletion function")
-    public void testCancellationOfReservation() throws Exception {
-        // configure date
-        Clock clock = Clock.fixed(Instant.parse("2022-09-20T7:00:00Z"), ZoneId.of("UTC"));
-        Clock clockEnd = Clock.fixed(Instant.parse("2022-09-20T12:00:00Z"), ZoneId.of("UTC"));
-
-        LocalDateTime startDateTime = LocalDateTime.now(clock);
-        LocalDateTime endDateTime = LocalDateTime.now(clockEnd);
-
-        Reservation reservation = new Reservation();
-        reservation.setAccepted(1);
-        reservation.setStartDate(startDateTime);
-        reservation.setEndDate(endDateTime);
-        reservation.setId(3);
-        if (placeRepo.findById(1L).isEmpty() || userRepo.findById(1L).isEmpty()) {
-            throw new Exception("Data in db couldn't be found");
-        }
-        reservation.setPlace(placeRepo.findById(2L).get());
-        reservation.setUser(userRepo.findById(1L).get());
-
-        reservationRepo.save(reservation);
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
-        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
-        String req = ow.writeValueAsString(reservation);
-
-        val res = mockMvc.perform(get("/api/book/cancel/3 ").contentType(MediaType.APPLICATION_JSON)
-                        .content(req)
-                        .header("Authorization", "Bearer " + accessToken))
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andReturn();
-    }*/
 }
