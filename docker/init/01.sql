@@ -59,4 +59,5 @@ VALUES (
         'MEMBER'
     );
 INSERT INTO BOOKING (id, creator, day_duration, date, status)
-VALUES ('413e2297-b84b-42ef-97ed-16a8a9d1d671', '4be5f5bf-8eb5-44ea-8eb5-a5e807856d09', 0.5, '2022-09-23', 'Pending');
+VALUES ('413e2297-b84b-42ef-97ed-16a8a9d1d671', '4be5f5bf-8eb5-44ea-8eb5-a5e807856d09', 0.5, '2022-09-27', 'Pending'),
+ ('777e2297-b84b-42ef-97ed-16a8a9d1d671', '4be5f5bf-8eb5-44ea-8eb5-a5e807856d09', 1, '2022-09-26', 'Pending');
