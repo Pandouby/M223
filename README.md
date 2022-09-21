@@ -1,11 +1,14 @@
-<h2 align="center">ÜK Modul-223 - Co-working Space application</h2>
+<h2 align="center">ÜK Modul-223 - CoWorking Space application</h2>
 
   <p align="center">
-    An application for a co-working space. The application is developed as the final practial assignement of the Modul 223 course at ZLI.:
+    This CoWorking Space project is for module 223
     <br />
   </p>
 <br>
 <br>
+
+### GitHub
+The GitHub repository can be found under https://github.com/Pandouby/m223
 
 ### Built With
 
@@ -26,6 +29,7 @@ Major frameworks/libraries used to develop and run a demo of the application:
 To start this project, you need to have the following tools installed on your machine:
 <!-- Docker -->
 * [Docker](https://www.docker.com/)
+* Java (JDK 17)
 
 ### Starting the database server
 
@@ -61,5 +65,5 @@ Therefore, the database <b>does not feature a Table for the location of bookings
 
 ### Client Demo (Postman)
 To be able to make requests to endpoints in a manner, corresponding to how an actual client would. There will be a Postman export in addition to the base Project
-that can be used to make requests to the endpoints. The Postman export can be found in the root directory of the project.
+that can be used to make requests to the endpoints. The Postman export can be found in the root directory of the project. To be able to test the endpoints the user musst first login either with Admin or Member with the coresponding postman call.
 
